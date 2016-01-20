@@ -18,9 +18,8 @@ namespace HyperThreader
             Console.WriteLine("--------------------------------------------------------------------------------");
             ExecuteTasks(12);
             Console.WriteLine("--------------------------------------------------------------------------------");
-            
-            Console.WriteLine("Waiting for you to do something...");
-            Console.ReadKey();
+            Console.WriteLine("\n\n");
+
             return;
         }
 
@@ -41,7 +40,7 @@ namespace HyperThreader
 
                 sw.Stop();
 
-                Console.WriteLine("Task{0}, Thread{1}, ManagedThread{2}, Elapsed ms {3}", Task.CurrentId, id, Thread.CurrentThread.ManagedThreadId, sw.ElapsedMilliseconds);
+                Console.WriteLine("Task {0,2}, Thread {1,2}, ManagedThread {2,2}, Elapsed ms {3,2}", Task.CurrentId, id, Thread.CurrentThread.ManagedThreadId, sw.ElapsedMilliseconds);
                 return (int)sw.ElapsedTicks;
             };
 
