@@ -27,8 +27,7 @@ namespace HyperThreader
         {
             Func<object, int> action = (object obj) =>
             {
-                var sw = new Stopwatch();
-                sw.Start();
+                var sw = Stopwatch.StartNew();
                 var nothing = long.MinValue + 1;
 
                 for (var i = 0D; i <= MAX_COUNTER; i++)
