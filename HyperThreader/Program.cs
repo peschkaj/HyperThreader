@@ -14,9 +14,9 @@ namespace HyperThreader
         {
             ExecuteTasks(1);
             Console.WriteLine("--------------------------------------------------------------------------------");
-            ExecuteTasks(6);
+            ExecuteTasks(Environment.ProcessorCount / 2);
             Console.WriteLine("--------------------------------------------------------------------------------");
-            ExecuteTasks(12);
+            ExecuteTasks(Environment.ProcessorCount);
             Console.WriteLine("--------------------------------------------------------------------------------");
             Console.WriteLine("\n\n");
 
@@ -29,18 +29,16 @@ namespace HyperThreader
             {
                 var sw = new Stopwatch();
                 sw.Start();
-                var id = (int)obj;
                 var nothing = long.MinValue + 1;
 
                 for (var i = 0D; i <= MAX_COUNTER; i++)
                 {
-                    nothing++;
-                    Math.Sqrt(nothing);
+                    Math.Sqrt(++nothing);
                 }
 
                 sw.Stop();
 
-                Console.WriteLine("Task {0,2}, Thread {1,2}, ManagedThread {2,2}, Elapsed ms {3,2}", Task.CurrentId, id, Thread.CurrentThread.ManagedThreadId, sw.ElapsedMilliseconds);
+                Console.WriteLine("Task {0,2}, Thread {1,2}, ManagedThread {2,2}, Elapsed ms {3,2}", Task.CurrentId, (int)obj, Thread.CurrentThread.ManagedThreadId, sw.ElapsedMilliseconds);
                 return (int)sw.ElapsedTicks;
             };
 
